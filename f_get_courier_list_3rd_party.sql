@@ -1,11 +1,11 @@
 CREATE OR REPLACE FUNCTION f_get_courier_list_3rd_party(
     in_akum_volume NUMERIC,
-    in_delivery_type VARCHAR(30),
+    in_delivery_type VARCHAR,
     in_delivery_sites VARCHAR[]
 )
 RETURNS TABLE (
-    courier_code VARCHAR(30),
-    service_code VARCHAR(30),
+    courier_code VARCHAR,
+    service_code VARCHAR,
     weight NUMERIC,
     with_insurance BOOLEAN,
     wood_packaging BOOLEAN,
@@ -14,8 +14,8 @@ RETURNS TABLE (
     additional_packaging_length NUMERIC,
     additional_packaging_width NUMERIC,
     additional_packaging_height NUMERIC,
-    api_service_id VARCHAR(30),
-    endpoint_url VARCHAR(100)
+    api_service_id VARCHAR,
+    endpoint_url VARCHAR
 ) AS $$
 BEGIN
     RETURN QUERY
