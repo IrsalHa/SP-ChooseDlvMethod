@@ -1,18 +1,18 @@
 CREATE OR REPLACE FUNCTION f_get_origin_destination_code(
-    in_province_id VARCHAR(20),
-    in_city_id VARCHAR(20),
-    in_kecamatan_id VARCHAR(20),
-    in_kelurahan_id VARCHAR(20),
-    in_postal_code VARCHAR(20),
-    in_delivery_site VARCHAR(4)
+    in_province_id VARCHAR,
+    in_city_id VARCHAR,
+    in_kecamatan_id VARCHAR,
+    in_kelurahan_id VARCHAR,
+    in_postal_code VARCHAR,
+    in_delivery_site VARCHAR
 )
 RETURNS TABLE (
-    origin_code VARCHAR(20),
-    destination_code VARCHAR(20)
+    origin_code VARCHAR,
+    destination_code VARCHAR
 ) AS $$
 DECLARE
-    v_origin_code VARCHAR(20);
-    v_destination_code VARCHAR(20);
+    v_origin_code VARCHAR;
+    v_destination_code VARCHAR;
 BEGIN
   
     SELECT 
