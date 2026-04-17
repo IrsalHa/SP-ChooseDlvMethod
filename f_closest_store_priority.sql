@@ -1,13 +1,13 @@
 CREATE OR REPLACE FUNCTION f_closest_store_priority(
-    in_province_id VARCHAR(30)
+    in_province_id VARCHAR
 )
 RETURNS TABLE (
-    site_stock VARCHAR(4),
-    site_name VARCHAR(50),
+    site_stock VARCHAR,
+    site_name VARCHAR,
     latitude DOUBLE PRECISION,
     longitude DOUBLE PRECISION,
-    store_stock VARCHAR(3),
-    postal_code VARCHAR(10)
+    store_stock VARCHAR,
+    postal_code VARCHAR
 ) AS $$
 BEGIN
     RETURN QUERY
