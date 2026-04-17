@@ -3,13 +3,13 @@ CREATE OR REPLACE FUNCTION f_closest_store(
     in_latitude DOUBLE PRECISION
 )
 RETURNS TABLE (
-    site_stock VARCHAR(4),       
-    site_name VARCHAR(50),
+    site_stock VARCHAR,       
+    site_name VARCHAR,
     latitude DOUBLE PRECISION,
     longitude DOUBLE PRECISION,
     distance DOUBLE PRECISION, 
-    store_stock VARCHAR(3),      
-    postal_code VARCHAR(10)
+    store_stock VARCHAR,      
+    postal_code VARCHAR
 ) AS $$
 BEGIN
     RETURN QUERY
