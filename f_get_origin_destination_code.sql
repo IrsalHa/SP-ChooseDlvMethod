@@ -20,22 +20,32 @@ BEGIN
     FROM 
         s_hms_site hs
     JOIN 
-        ft_m_origin_code_jne moj 
-        ON moj.postal_code = hs.postal_code
+        m_province mp
+        ON hs.province_name = mp.province_name
+        AND mp.status = true
+    JOIN
+        m_city mc
+        ON hs.city = mc.city_name
+        AND mc.province_id = mp.province_id
+        AND mc.status = true
+    JOIN
+        ft_m_origin_code_jne moj
+        ON mp.province_id = moj.province_id
+        AND mc.city_id = moj.city_id
         AND moj.status = true
-    WHERE 
+    WHERE
         hs.company_group = 'HSE'
         AND hs.is_setup = true
         AND hs.status = true
         AND hs.site_id = in_delivery_site
     LIMIT 1;
 
-   
-    SELECT 
+
+    SELECT
         mdcj.destination_code INTO v_destination_code
-    FROM 
+    FROM
         ft_m_destination_code_jne mdcj
-    WHERE 
+    WHERE
         mdcj.province_id = in_province_id
         AND mdcj.city_id = in_city_id
         AND mdcj.district_id = in_kecamatan_id
@@ -44,8 +54,8 @@ BEGIN
         AND mdcj.status = true
     LIMIT 1;
 
-  
-    RETURN QUERY 
+
+    RETURN QUERY
     SELECT v_origin_code, v_destination_code;
 
 END;
