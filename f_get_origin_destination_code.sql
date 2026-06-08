@@ -20,17 +20,8 @@ BEGIN
     FROM 
         s_hms_site hs
     JOIN 
-        m_province mp 
-        ON hs.province_name = mp.province_name 
-        AND mp.status = true
-    JOIN 
-        m_city mc 
-        ON hs.city = mc.city_name 
-        AND mc.status = true
-    JOIN 
         ft_m_origin_code_jne moj 
-        ON mp.province_id = moj.province_id 
-        AND mc.city_id = moj.city_id 
+        ON moj.postal_code = hs.postal_code
         AND moj.status = true
     WHERE 
         hs.company_group = 'HSE'
